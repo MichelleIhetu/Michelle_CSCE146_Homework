@@ -1,0 +1,96 @@
+import java.io.File;
+import java.util.Scanner;
+
+
+public class Prize {
+
+    public static void main(String[] args) {
+
+        Scanner keyboard = new Scanner(System.in);
+         String prize = keyboard.nextLine();
+    }
+
+  public static int read(String text)
+  {
+    if(text == null){
+        return 0;
+    }
+    
+try {
+    //seperate name and price of file
+
+    //read the file
+    Scanner fileScanner = new Scanner(new File("prizeList.txt"));
+   
+    //delimit 
+String line = fileScanner.nextLine();
+
+String[] prizeName = line.split("/t");
+String[] prizeCost = line.split("\n");
+
+}
+catch(Exception e){
+    e.printStackTrace();
+
+}
+   
+
+ return 0;  
+  }
+
+
+
+  public static int select(String prize)
+  {
+    if(prize == null){
+        return 0;
+    }
+
+    // Retrieve the random line
+    java.util.Random random = new java.util.Random();
+
+    
+    String[] prizeNames = prize.split("/t");
+    int randomIndex = random.nextInt(prizeNames.length);
+    String randomValue = prizeNames[randomIndex];
+    System.out.println("Random value from prize names: " + randomValue);
+
+    // user must be presented with the prizes’ names before they make a guess
+    System.out.println("Hello welcome to prize collector! Here are the prize names: ");
+    for(String name : prizeNames) {
+        System.out.println(name);
+    }
+int[] collectedprizes = new int[5];
+
+int[] prizeCost = new int[5];
+
+
+System.out.println("Hello welcome to prize collector! Here are the prize names: " + String.join(", ", prizeNames));
+System.out.println("Guess how much the prizes are worth");
+Scanner keyboard = new Scanner(System.in);
+int answer = keyboard.nextInt();
+
+//must determine if the user’s guess was less than or equal the sum of the prizes 
+
+int prizessum = 0;
+for (int cost : prizeCost) {
+    prizessum += cost;
+}
+if(answer <= prizessum && answer >= prizessum - 1300)
+{
+    System.out.println("Congrats you won!");
+}
+else 
+{
+    System.out.println("Too bad you lost");
+}
+
+//and greater than or equal the sum of the prizes minus $1,300. 
+//If both are true, then the program must inform the user they won! 
+//Otherwise the program must inform the user they lost.
+
+    return randomIndex;
+
+  }
+}
+
